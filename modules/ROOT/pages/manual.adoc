@@ -1,24 +1,19 @@
 == はじめに
 
-このたびは SC-OBC Module A1 Development Board
-をご利用いただき、ありがとうございます。
+このたびは SC-OBC Module A1 Development Board をご利用いただき、ありがとうございます。 +
+SC-OBC Module A1 Development Board は、SC-OBC Module A1の初期の開発を円滑に行えることを目的としており、ソフトウェアやFPGAの開発に必要な以下のような各種インタフェースが搭載されています。
 
-SC-OBC Module A1 Development Board は、SC-OBC Module
-A1の初期の開発を円滑に行えることを目的としており、ソフトウェアやFPGAの開発に必要な以下のような各種インタフェースが搭載されています。
-
-* PIC ICSP、FPGA JTAG、CAN、SC Bus　など
+* PIC ICSP、FPGA JTAG、CAN、SC Bus  など
 
 またハードウェア開発の助けとなる以下のような機能も備えています。
 
 * 柔軟性のある電源インタフェース
-* サブシステムとの接続が容易で、ユーザーが設計した回路をブレッドボードでもOn
-Boardでも自由に実装可能なスルーホールエリア
+* サブシステムとの接続が容易で、ユーザーが設計した回路をブレッドボードでもOn Boardでも自由に実装可能なスルーホールエリア
 * ユーザーが自由に使用できる回路
 +
 など
 
-SC-OBC Module A1 Development Board は、SC-OBC Module
-A1を用いたBBMの開発の助けとなります。
+SC-OBC Module A1 Development Board は、SC-OBC Module A1を用いたBBMの開発の助けとなります。
 
 == 注意事項
 
@@ -37,10 +32,9 @@ A1を用いたBBMの開発の助けとなります。
 本製品の取扱い時には以下のような点にご注意ください。
 
 * コネクタへは無理に力を加えて破損することのないよう注意してください。
-* 本製品や周辺回路に電源が入っている状態で、活線挿抜対応インタフェース(USB、SC
-Bus)以外へ挿抜は行わないでください。
+* 本製品や周辺回路に電源が入っている状態で、活線挿抜対応インタフェース（USB、SC Bus）以外へ挿抜は行わないでください。
 * 本製品を開封するときは静電気にご注意ください。
-* 連続的な振動(車載等)や衝撃が発生する環境下でのご使用は、製品寿命を縮め、故障が発生しやすくなりますのでご注意ください。
+* 連続的な振動（車載等）や衝撃が発生する環境下でのご使用は、製品寿命を縮め、故障が発生しやすくなりますのでご注意ください。
 * 本製品を仕様範囲を越える条件において使用した場合、故障の原因となりますので、ご注意ください。
 
 === 製品の保管について
@@ -51,10 +45,8 @@ Bus)以外へ挿抜は行わないでください。
 |===
 |推奨温湿度環境 |5～30℃/60%RH 以下
 |===
-* 製品を在庫として保管するときは、高温・多湿、埃の多い環境、水濡れの可能性のある場所、直射日光のあたる場所、有毒ガス
-(特に腐食性ガス) の発生する場所を避けて保管してください。
-* 温度変化の少ない場所に保管してください。保管時の急激な温度変化は結露が生じ、金
-属部の酸化、腐食などが発生し、はんだ濡れ性に影響が出る場合があります。
+* 製品を在庫として保管するときは、高温・多湿、埃の多い環境、水濡れの可能性のある場所、直射日光のあたる場所、有毒ガス（特に腐食性ガス）の発生する場所を避けて保管してください。
+* 温度変化の少ない場所に保管してください。保管時の急激な温度変化は結露が生じ、金属部の酸化、腐食などが発生し、はんだ濡れ性に影響が出る場合があります。
 * 本製品を保管する際は、静電気を帯びやすいビニール袋やプラスチック容器などは避け、帯電防止処理された収納容器を使用してください。
 * 金メッキ部分に素手で触れた場合、劣化が早まるためご注意ください。
 
@@ -68,49 +60,24 @@ Bus)以外へ挿抜は行わないでください。
 
 本書の中で使用する用語の定義は以下の通りです。
 
-[width="100%",cols="50%,50%",options="header",]
+[width="100%",cols="1,4",options="header",]
 |===
 |用語 |説明
 |OBC |SC-OBC Module A1 を示す。
-
-|TRCH |Timing, Reset, Config & Health Controller の略。OBCでは
-PIC16LF877 を採用している。
-
-|FPGA |Field Programmable Gate Array の略。OBCではXilinx製 Artix-7
-を採用している。
-
+|TRCH |Timing, Reset, Config & Health Controller の略。OBCでは PIC16LF877 を採用している。
+|FPGA |Field Programmable Gate Array の略。OBCではXilinx製 Artix-7 を採用している。
 |Dev Board |SC-OBC Module A1 Development Board を示す。
-
-|Universal Area |Dev
-Board上に2.54mmピッチで配置している、未接続のスルーホール群のエリア全体を示す。
-
+|Universal Area |Dev Board上に2.54mmピッチで配置している、未接続のスルーホール群のエリアを示す。
 |UIO1 |OBCのFPGAにおける User IO Group 1 を示す。
-
 |UIO2 |OBCのFPGAにおける User IO Group 2 を示す。
-
 |UIO3 |OBCのFPGAにおける User IO Group 3 を示す。
-
 |UIO4 |OBCのFPGAにおける User IO Group 4 を示す。
-
 |VIN_A |OBCの冗長化された電源入力の片側（A系統）を示す。
-
 |VIN_B |OBCの冗長化された電源入力の片側（B系統）を示す。
-
-|VDD_3V3_SYS
-|OBCから出力される電圧を示す。VIN_AおよびVIN_Bへ入力した+5Vから生成された+3.3Vが統合された電圧で、OBCのTRCHなどで使用されている。
-
-|詳しくはOBCの電源回路の構成を参照。 |
-
-|VDD_3V3_IO
-|OBCから出力される電圧を示す。VDD_3V3_SYSが更にOBCの回路を経由した後の電圧で、OBCのFPGAなどに使用されている。
-
-|詳しくはOBCの電源回路の構成を参照。 |
-
-|VDD_3V3_DCDC |Dev Board上に設けられている降圧DC/DCコンバータ回路
-(IC13)の出力 (+3.3V)を示す。
-
+|VDD_3V3_SYS |OBCから出力される電圧を示す。VIN_AおよびVIN_Bへ入力した+5Vから生成された+3.3Vが統合された電圧で、OBCのTRCHなどで使用されている。詳しくはOBCの電源回路の構成を参照。
+|VDD_3V3_IO |OBCから出力される電圧を示す。VDD_3V3_SYSが更にOBCの回路を経由した後の電圧で、OBCのFPGAなどに使用されている。詳しくはOBCの電源回路の構成を参照。
+|VDD_3V3_DCDC |Dev Board上に設けられている降圧DC/DCコンバータ回路（IC13）の出力（+3.3V）を示す。
 |VDD_UIO1 |UIO1が属するFPGA Bankへの電源を示す。
-
 |VDD_UIO2 |UIO2が属するFPGA Bankへの電源を示す。
 |===
 
@@ -147,7 +114,7 @@ Switch
 
 === セット内容
 
-[cols=",",options="header",]
+[width="50%",cols="4,1",options="header",]
 |===
 |名称 |数量
 |Dev Board |1
@@ -155,21 +122,52 @@ Switch
 |ピンソケット 1 x 40（白色） |2
 |ピンソケット 1 x 42（黒色） |2
 |ミニブレッドボード |2
+|ジャンパーソケット |5
 |両端ロングピンヘッダ 1 x 8 |1
-|ACアダプタ (5V/3.0A PL03B) |1
-|ネジ・スペーサー類 |1 式
+|ACアダプタ（5V/3.0A PL03B） |1
+|ナベ小ネジ（M3, L=4mm） |11
+|六角オネジ―メネジスペーサー（M3, L=5mm） |4
+|六角ナット（2種, M3） |4
+|六角メネジ―メネジスペーサー（M3, L=10mm） |7
 |===
 
 === 外観
+Dev Boardの外観を以下に示します。
+
+image::Appearance.svg[Appearance.svg]
+
+[width="100%",cols="1,2,6,options="header",]
+|===
+|番号 |名称 |説明
+|1 |主電源コネクタ |オプションのACアダプタを接続します。
+|2 |電源スイッチ |主電源の入切が可能です。
+|3 |PowerLED インジケータ |各種電源の出力状況の判別できます。
+|4 |OBC |SC-OBC Module A1を搭載できます。
+|5 |電源セレクタ |主電源およびUIO電源の入力先の切り替えができます。
+|6 |ユーザースイッチ |ユーザーが自由に機能を設定できるDIPスイッチです。
+|7 |ユーザー温度センサ |ユーザーが自由に使用できる温度センサです。
+|8 |ユーザーLED |ユーザーが自由に使用できる黄緑色LEDです。
+|9 |CANコネクタ |CAN通信用のケーブルを接続できる端子台です。
+|10 |USBコネクタ |USB micro-Bプラグを接続できます。Consoleとして使用できます。
+|11 |FPJA JTAGコネクタ |Xilinx JTAGデバッカを接続できます。
+|12 |PIC KITコネクタ |Microchip PICKITを接続できます。
+|13 |UIO2 Universal Area |ユーザーが自由に使用できる領域です。UIO2の信号線が領域近傍まで引き出されています。
+|14 |UIO4 Universal Area |ユーザーが自由に使用できる領域です。UIO4の信号線が領域近傍まで引き出されています。
+|15 |UIO3 Universal Area |ユーザーが自由に使用できる領域です。VDD_3V3_SYSに関わる信号線が領域近傍まで引き出されています。
+|16 |UIO1 Universal Area |ユーザーが自由に使用できる領域です。UIO1の信号線が領域近傍まで引き出されています。
+|17 |USBコネクタ |USB TypeAプラグ（表面）、またはmicro-Bプラグ（裏面）を接続できます。SC Bus通信の用途で使用できます。
+|18 |UIO電源コネクタ |ユーザーがUIO電源を任意の電圧で供給できる端子台です。
+|19 |主電源コネクタ |ユーザーがACアダプタ以外で主電源を供給できる端子台です。
+|===
 
 === ブロック図
+Dev Boardのブロック図を以下に示します。 +
+電源についての詳細なブロック図は別途示します。
 
-.Function_Block_diagram.svg
 image::Function_Block_diagram.svg[Function_Block_diagram.svg]
 
-=== 電源系統図
+電源のブロック図を以下に示します。
 
-.Power_Block_diagram.svg
 image::Power_Block_diagram.svg[Power_Block_diagram.svg]
 
 == 電源を入れる前に
