@@ -136,7 +136,7 @@ Dev Boardの外観を以下に示します。
 
 image::Appearance.svg[Appearance.svg]
 
-[width="100%",cols="1,2,6,options="header",]
+[width="100%",cols="1,2,6",options="header",]
 |===
 |番号 |名称 |説明
 |1 |主電源コネクタ |オプションのACアダプタを接続します。
@@ -173,10 +173,33 @@ image::Power_Block_diagram.svg[Power_Block_diagram.svg]
 == 電源を入れる前に
 
 === 準備するもの
+Dev Boardを使用する前に、次のものを必要に応じて準備してください。
+
+[width="100%",cols="1,3",]
+|===
+|作業用 PC |Linux または Windows が動作し、 1つ以上の USB ポートを持つ PC です。
+|USBケーブル |Consoleで使用します。TypeA - micro-Bタイプが必要です。
+|MPLAB PIC KIT |Microchip製のデバッカです。TRCHのソフトウェア書き込みに使用します。
+|Platform Cable USB II |Xilinx製のデバッカです。FPGAの書き込みなどに使用します。
+|===
 
 === インタフェースレイアウト
 
 === 接続方法
+Dev Boardと周辺機器との接続例を以下に示します。
+
+image::Connection_diagram.svg[Connection_diagram.svg]
+
+[width="50%",cols="1,3",options="header",]
+|===
+|番号 |名称
+|1 |OBC + Dev Board
+|2 |ACアダプタ (5V/3.0A PL03B)
+|3 |作業用 PC
+|4 |USBケーブル（TypeA - micro-B）
+|5 |MPLAB PIC KIT
+|6 |Platform Cable USB II
+|===
 
 === スイッチの設定について
 
@@ -184,12 +207,12 @@ image::Power_Block_diagram.svg[Power_Block_diagram.svg]
 
 === 絶対最大定格
 
-[width="99%",cols="20%,16%,16%,16%,16%,16%",options="header",]
+[width="100%",cols="3,3,2,1,1,1",options="header",]
 |===
-|項目 |記号 |最小 |最大 |単位 |条件など
-|電源電圧 |5V, VIN_A, VIN_B |-0.3 |12 |V |
-|FPGA I/O バンク電源電圧 |VDD_UIO1_TRM, VDD_UIO2_TRM |-0.3 |3.6 |V |
-|動作温度 |Topr |-20 |70 |℃ |結露なきこと
+|項目 |記号 |条件 |最小 |最大 |単位
+|電源電圧 |5V, VIN_A_TRM, VIN_B_TRM | |-0.3 |12 |V
+|FPGA I/O バンク電源電圧 |VDD_UIO1_TRM, VDD_UIO2_TRM |OBC搭載時 |-0.3 |3.6 |V
+|動作温度 |Topr |結露なきこと |-20 |70 |℃
 |===
 
 絶対最大定格は、あらゆる使用条件や試験状況において、瞬時でも超えてはならない値です。
@@ -198,251 +221,145 @@ image::Power_Block_diagram.svg[Power_Block_diagram.svg]
 
 === 推奨動作範囲
 
-[width="99%",cols="16%,14%,14%,14%,14%,14%,14%",options="header",]
+[width="100%",cols="3,3,2,1,1,1,1",options="header",]
 |===
-|項目 |記号 |最小 |標準 |最大 |単位 |条件など
-|電源電圧 |5V, VIN_A, VIN_B |4.75 |5.0 |5.25 |V |
-|FPGA I/Oバンク電源電圧 |VDD_UIO1_TRM, VDD_UIO2_TRM |1.14 | |3.465 |V |
-|動作温度 |Topr |10 |25 |40 |℃ |結露なきこと
+|項目 |記号 |条件 |最小 |標準 |最大 |単位
+|電源電圧 |5V, VIN_A_TRM, VIN_B_TRM | |4.75 |5.0 |5.25 |V
+|FPGA I/Oバンク電源電圧 |VDD_UIO1_TRM, VDD_UIO2_TRM |OBC搭載時 |1.14 | |3.465 |V
+|動作温度 |Topr |結露なきこと |10 |25 |40 |℃
 |===
 
 === 電気的特性
 
-[width="99%",cols="16%,14%,14%,14%,14%,14%,14%",options="header",]
+[width="100%",cols="3,1,2,1,1,1,1",options="header",]
 |===
 |項目 |記号 |条件 |最小 |標準 |最大 |単位
-|過電圧保護(OVP)しきい値電圧 |Vocp_th |VIN_A, VIN_B (Note 1) | |5.6 | |V
-
-|過電流保護(OCP)しきい値電流 |Iocp_th |VIN_A (Note 1) |3.2 | | |A
-
-| | |VIN_B (Note 1) |1.2 | | |A
-
-| | |VDD_3V3_SYS (Note 1) |100 | | |mA
-
-| | |VBUS_A (Note 1) |1.0 | | |A
-
-|SC Bus Host 出力電圧(VBUS_A) |latexmath:[V_{BUS\_A}] | | |5.0 | |V
-
-|DC/DCコンバータ出力 (VDD_3V3_DCDC) |latexmath:[V_{DCDC}] | |3.135 |3.3
-|3.465 |V
-
-| |latexmath:[I_{DCDC}] | | | |2 |A
+|過電圧保護(OVP)しきい値電圧 |Vocp_th |VIN_A, VIN_B ^[Note1]^ | |5.6 | |V
+|過電流保護(OCP)しきい値電流 |Iocp_th |VIN_A ^[Note1]^ |3.2 | | |A
+| | |VIN_B ^[Note1]^ |1.2 | | |A
+| | |VDD_3V3_SYS ^[Note1]^ |100 | | |mA
+| | |VBUS_A ^[Note1]^ |1.0 | | |A
+|SC Bus Host 出力電圧 |VBUS_A | | |5.0 | |V
+|DC/DCコンバータ出力電圧 |VDD_3V3_DCDC |I~dcdc~ = 2A |3.135 |3.3 |3.465 |V
+|DC/DCコンバータ出力電流 |I~dcdc~ | | | |2 |A
 |===
 
 == インタフェース仕様
 
-[width="100%",cols="25%,25%,25%,25%",options="header",]
+[width="100%",cols="1,2,2,1",options="header",]
 |===
 |部品番号 |インタフェース名称 |形状 |備考
-|CON1 |OBC接続 インタフェース |基板間コネクタ80ピン (0.5mmピッチ)
-|挿抜寿命：50回
-
-|CON2 |OBC FPGA JTAG インタフェース |シュラウド型ライトアングル
-ピンヘッダ14ピン (2.0mmピッチ) |
-
-|CON3 |OBC FPGA JTAG インタフェース (Flying Wire Adapter)
-|ピンヘッダ6ピン (2.54mmピッチ) |コネクタ非搭載
-
-|CON4 |PIC ICSP インタフェース |ライトアングル ピンソケット8ピン
-(2.54mmピッチ) |
-
+|CON1 |OBC接続インタフェース |基板間コネクタ80ピン (0.5mmピッチ) |挿抜寿命：50回
+|CON2 |OBC FPGA JTAG インタフェース |シュラウド型ライトアングル ピンヘッダ14ピン (2.0mmピッチ) |
+|CON3 |OBC FPGA JTAG インタフェース (Flying Wire Adapter) |ピンヘッダ6ピン (2.54mmピッチ) |コネクタ非搭載
+|CON4 |PIC ICSP インタフェース |ライトアングル ピンソケット8ピン (2.54mmピッチ) |
 |CON5 |CAN インタフェース |端子台3ピン (5.0mmピッチ) |
-
-|CON6 |UIO1 インタフェース |ピンソケット17ピン (2.54mmピッチ)
-|コネクタ非搭載
-
-|CON7 |UIO1 Power＆GND インタフェース |ピンソケット34ピン (2.54mmピッチ)
-|コネクタ非搭載
-
-|CON8 |UIO2 インタフェース |ピンソケット17ピン (2.54mmピッチ)
-|コネクタ非搭載
-
-|CON9 |UIO2 Power＆GND インタフェース |ピンソケット34ピン (2.54mmピッチ)
-|コネクタ非搭載
-
-|CON10 |UIO3 インタフェース |ピンソケット17ピン (2.54mmピッチ)
-|コネクタ非搭載
-
-|CON11 |UIO3 Power＆GND インタフェース |ピンソケット34ピン
-(2.54mmピッチ) |コネクタ非搭載
-
-|CON12 |UIO4 インタフェース |ピンソケット17ピン (2.54mmピッチ)
-|コネクタ非搭載
-
-|CON13 |UIO4 Power＆GND インタフェース |ピンソケット34ピン
-(2.54mmピッチ) |コネクタ非搭載
-
-|CON14 |Debug UART インタフェース |USB2.0 micro-Bコネクタ |
-
-|CON15 |SCBusホスト インタフェース |USB2.0 TypeAコネクタ |
-
-|CON16 |SCBusデバイス インタフェース |USB2.0 micro-Bコネクタ |
-
-|CON17 |電源入力 インタフェース |DCジャック |対応プラグ : 2.1mmΦ
-(センタープラス)
-
+|CON6 |UIO1 インタフェース |ピンソケット17ピン (2.54mmピッチ) |コネクタ非搭載
+|CON7 |UIO1 Power＆GND インタフェース |ピンソケット34ピン (2.54mmピッチ) |コネクタ非搭載
+|CON8 |UIO2 インタフェース |ピンソケット17ピン (2.54mmピッチ) |コネクタ非搭載
+|CON9 |UIO2 Power＆GND インタフェース |ピンソケット34ピン (2.54mmピッチ) |コネクタ非搭載
+|CON10 |UIO3 インタフェース |ピンソケット17ピン (2.54mmピッチ) |コネクタ非搭載
+|CON11 |UIO3 Power＆GND インタフェース |ピンソケット34ピン (2.54mmピッチ) |コネクタ非搭載
+|CON12 |UIO4 インタフェース |ピンソケット17ピン (2.54mmピッチ) |コネクタ非搭載
+|CON13 |UIO4 Power＆GND インタフェース |ピンソケット34ピン (2.54mmピッチ) |コネクタ非搭載
+|CON14 |Console インタフェース |USB micro-Bコネクタ |
+|CON15 |SC Busホスト インタフェース |USB TypeAコネクタ |
+|CON16 |SC Busデバイス インタフェース |USB micro-Bコネクタ |
+|CON17 |電源入力 インタフェース |DCジャック |対応プラグ : 2.1mmΦ (センタープラス)
 |CON18 |電源入力 インタフェース (VIN_A) |端子台2ピン (5.0mmピッチ) |
-
 |CON19 |電源入力 インタフェース (VIN_B) |端子台2ピン (5.0mmピッチ) |
-
 |CON20 |電源入力 インタフェース (UIO1) |端子台2ピン (5.0mmピッチ) |
-
 |CON21 |電源入力 インタフェース (UIO2) |端子台2ピン (5.0mmピッチ) |
-
-|CON22 |3.3V電源出力 インタフェース |ピンヘッダ2ピン (2.54mmピッチ)
-|コネクタ非搭載
-
-|CON23 |任意のFPGA UART接続 インタフェース |ピンヘッダ2ピン
-(2.54mmピッチ) |コネクタ非搭載
-
-|JP1 |CAN終端抵抗切替 インタフェース |ピンヘッダ2ピン (2.54mmピッチ)
-|ジャンパーソケット搭載
-
-|JP2 |電源入力切替 インタフェース (VIN_A) |ピンヘッダ3ピン
-(2.54mmピッチ) |ジャンパーソケット搭載
-
-|JP3 |電源入力切替 インタフェース (VIN_B) |ピンヘッダ3ピン
-(2.54mmピッチ) |ジャンパーソケット搭載
-
-|JP4 |電源入力切替 インタフェース (UIO1) |ピンヘッダ6ピン (2.54mmピッチ)
-|ジャンパーソケット搭載
-
-|JP5 |電源入力切替 インタフェース (UIO2) |ピンヘッダ6ピン (2.54mmピッチ)
-|ジャンパーソケット搭載
-
-|SW1 |User スイッチ |DIPスイッチ |
-
+|CON22 |3.3V電源出力 インタフェース |ピンヘッダ2ピン (2.54mmピッチ) |コネクタ非搭載
+|CON23 |任意のFPGA UART接続 インタフェース |ピンヘッダ2ピン (2.54mmピッチ) |コネクタ非搭載
+|JP1 |CAN終端抵抗切替 インタフェース |ピンヘッダ2ピン (2.54mmピッチ) |ジャンパーソケット搭載
+|JP2 |電源入力切替 インタフェース (VIN_A) |ピンヘッダ3ピン (2.54mmピッチ) |ジャンパーソケット搭載
+|JP3 |電源入力切替 インタフェース (VIN_B) |ピンヘッダ3ピン (2.54mmピッチ) |ジャンパーソケット搭載
+|JP4 |電源入力切替 インタフェース (UIO1) |ピンヘッダ6ピン (2.54mmピッチ) |ジャンパーソケット搭載
+|JP5 |電源入力切替 インタフェース (UIO2) |ピンヘッダ6ピン (2.54mmピッチ) |ジャンパーソケット搭載
+|SW1 |ユーザースイッチ |DIPスイッチ |
 |SW2 |主電源入力 ON/OFF |スライドスイッチ |
-
 |LED1~8 |電源LED |LED (黄緑色) |
-
-|LED9-10 |Debug UART TX&RX LED |LED (黄緑色) |
-
-|LED11 |User LED |LED (黄緑色) |
+|LED9-10 |Console TX&RX LED |LED (黄緑色) |
+|LED11 |ユーザー LED |LED (黄緑色) |
 |===
 
-=== OBC接続 インタフェース（CON1）
+=== OBC接続インタフェース（CON1）
 
-CON1はOBCとの接続 インタフェースです。
+CON1はOBCとの接続インタフェースです。
 
 搭載コネクタ：AXK5S80047YG（Panasonic）
 
-[width="100%",cols="20%,20%,20%,20%,20%",options="header",]
+[width="100%",cols="1,2,1,3,3",options="header",]
 |===
 |ピン番号 |ピン名 |I/O |電源グループ |説明
 |1 |VIN_A_P1 |Power |- |OBCの主電源（A系統）
-
 |2 |VIN_A_P2 |Power |- |OBCの主電源（A系統）
-
 |3 |VIN_A_P3 |Power |- |OBCの主電源（A系統）
-
 |4 |ULPI_DP |In/Out |- |SC Bus D+信号
-
 |5 |ULPI_DM |In/Out |- |SC Bus D-信号
-
-|6 |GND |Power |- |電源(GND)
-
+|6 |GND |Power |- |電源 (GND)
 |7 |UIO1_00 |In/Out |VDD_UIO1 |UIO1 Bit 0信号
-
 |8 |UIO1_01 |In/Out |VDD_UIO1 |UIO1 Bit 1信号
-
 |9 |UIO1_02 |In/Out |VDD_UIO1 |UIO1 Bit 2信号
-
 |10 |UIO1_03 |In/Out |VDD_UIO1 |UIO1 Bit 3信号
-
 |11 |UIO1_04 |In/Out |VDD_UIO1 |UIO1 Bit 4信号
-
 |12 |UIO1_05 |In/Out |VDD_UIO1 |UIO1 Bit 5信号
-
 |13 |UIO1_06 |In/Out |VDD_UIO1 |UIO1 Bit 6信号
-
 |14 |UIO1_07 |In/Out |VDD_UIO1 |UIO1 Bit 7信号
-
-|15 |GND |Power |- |電源(GND)
-
+|15 |GND |Power |- |電源 (GND)
 |16 |UIO1_08 |In/Out |VDD_UIO1 |UIO1 Bit 8信号
-
 |17 |UIO1_09 |In/Out |VDD_UIO1 |UIO1 Bit 9信号
-
 |18 |UIO1_10 |In/Out |VDD_UIO1 |UIO1 Bit 10信号
-
 |19 |UIO1_11 |In/Out |VDD_UIO1 |UIO1 Bit 11信号
-
 |20 |UIO1_12 |In/Out |VDD_UIO1 |UIO1 Bit 12信号
-
 |21 |UIO1_13 |In/Out |VDD_UIO1 |UIO1 Bit 13信号
-
 |22 |UIO1_14 |In/Out |VDD_UIO1 |UIO1 Bit 14信号
-
 |23 |UIO1_15 |In/Out |VDD_UIO1 |UIO1 Bit 15信号
-
-|24 |GND |Power |- |電源(GND)
-
-|25 |UIO3_00 / UIIO4_06 |In/Out |VDD_3V3_SYS / VDD_3V3_IO[fn:hwopt]
-|UIO3 Bit 0信号。ハードウェアオプションで UIO4 Bit
+|24 |GND |Power |- |電源 (GND)
+|25 |UIO3_00 / UIIO4_06 |In/Out |VDD_3V3_SYS / VDD_3V3_IO ^[fn:hwopt]^ |UIO3 Bit 0信号。ハードウェアオプションで UIO4 Bit
 6信号との接続変更が可能。
-
-|26 |UIO3_01 / UIIO4_07 |In/Out |VDD_3V3_SYS / VDD_3V3_IO[fn:hwopt]
-|UIO3 Bit 1信号。ハードウェアオプションで UIO4 Bit
+|26 |UIO3_01 / UIIO4_07 |In/Out |VDD_3V3_SYS / VDD_3V3_IO ^[fn:hwopt]^ |UIO3 Bit 1信号。ハードウェアオプションで UIO4 Bit
 7信号との接続変更が可能。
-
-|27 |UIO3_02 / UIIO4_08 |In/Out |VDD_3V3_SYS / VDD_3V3_IO[fn:hwopt]
-|UIO3 Bit 2信号。ハードウェアオプションで UIO4 Bit
+|27 |UIO3_02 / UIIO4_08 |In/Out |VDD_3V3_SYS / VDD_3V3_IO ^[fn:hwopt]^ |UIO3 Bit 2信号。ハードウェアオプションで UIO4 Bit
 8信号との接続変更が可能。
-
 |28 |UIO4_00 |Input |VDD_3V3_IO |UIO4 Bit 0信号
-
-|29 |GND |Power |- |電源(GND)
-
-|30 |TRCH_UART_TX / UIO4_09 |Input |VDD_3V3_SYS / VDD_3V3_IO[fn:hwopt]
-|TRCH UART TX信号。ハードウェアオプションで UIO4 Bit
+|29 |GND |Power |- |電源 (GND)
+|30 |TRCH_UART_TX / UIO4_09 |Input |VDD_3V3_SYS / VDD_3V3_IO ^[fn:hwopt]^ |TRCH UART TX信号。ハードウェアオプションで UIO4 Bit
 9信号との接続変更が可能。
-
-|31 |TRCH_UART_RX / UIO4_10 |Output |VDD_3V3_SYS / VDD_3V3_IO[fn:hwopt]
-|TRCH UART RX信号。ハードウェアオプションで UIO4 Bit
-10信号との接続変更が可能。
-
-|32 |VDD_3V3_SYS |Power |- |OBCからの3.3V電源(VDD_3V3_SYS)
-
-|33 |GND |Power |- |電源(GND)
-
+|31 |TRCH_UART_RX / UIO4_10 |Output |VDD_3V3_SYS / VDD_3V3_IO ^[fn:hwopt]^ |TRCH UART RX信号。ハードウェアオプションで UIO4 Bit 10信号との接続変更が可能。
+|32 |VDD_3V3_SYS |Power |- |OBCからの3.3V電源 (VDD_3V3_SYS)
+|33 |GND |Power |- |電源 (GND)
 |34 |I2C_EXT_SCL |Input |VDD_3V3_SYS |I2C SCL信号
-
 |35 |I2C_EXT_SDA |In/Out |VDD_3V3_SYS |I2C SDA信号
-
-|36 |WDOG_OUT / UIO4_11 |Input |VDD_3V3_SYS / VDD_3V3_IO[fn:hwopt]
-|Watchdog入力信号。ハードウェアオプションで UIO4 Bit
+|36 |WDOG_OUT / UIO4_11 |Input |VDD_3V3_SYS / VDD_3V3_IO ^[fn:hwopt]^ |Watchdog入力信号。ハードウェアオプションで UIO4 Bit
 11信号との接続変更が可能。
-
-|37 |VDD_3V3_IO_P37 |Power |- |OBCからの3.3V電源(VDD_3V3_IO)
-
-|38 |VDD_3V3_IO_P38 |Power |- |OBCからの3.3V電源(VDD_3V3_IO)
-
-|39 |VDD_UIO1_P39 |Power |- |UIO1用の電源(VDD_UIO1)
-
-|40 |VDD_UIO1_P40 |Power |- |UIO1用の電源(VDD_UIO1)
+|37 |VDD_3V3_IO_P37 |Power |- |OBCからの3.3V電源 (VDD_3V3_IO)
+|38 |VDD_3V3_IO_P38 |Power |- |OBCからの3.3V電源 (VDD_3V3_IO)
+|39 |VDD_UIO1_P39 |Power |- |UIO1用の電源 (VDD_UIO1)
+|40 |VDD_UIO1_P40 |Power |- |UIO1用の電源 (VDD_UIO1)
 |===
 
-[cols=",,,,",options="header",]
+[width="100%",cols="1,2,1,3,3",options="header",]
 |===
 |ピン番号 |ピン名 |I/O |電源グループ |説明
-|41 |VDD_UIO2_P41 |Power |- |UIO2用の電源(VDD_UIO2)
-|42 |VDD_UIO2_P42 |Power |- |UIO2用の電源(VDD_UIO2)
+|41 |VDD_UIO2_P41 |Power |- |UIO2用の電源 (VDD_UIO2)
+|42 |VDD_UIO2_P42 |Power |- |UIO2用の電源 (VDD_UIO2)
 |43 |UIO4_05 |In/Out |VDD_3V3_IO |UIO4 Bit 5信号
 |44 |UIO4_04 |In/Out |VDD_3V3_IO |UIO4 Bit 4信号
 |45 |UIO4_03 |In/Out |VDD_3V3_IO |UIO4 Bit 3信号
 |46 |UIO4_02 |In/Out |VDD_3V3_IO |UIO4 Bit 2信号
 |47 |UIO4_01 |In/Out |VDD_3V3_IO |UIO4 Bit 1信号
-|48 |GND |Power |- |電源(GND)
+|48 |GND |Power |- |電源 (GND)
 |49 |ICSP_PGD |In/Out |VDD_3V3_SYS |PIC PGD信号
 |50 |ICSP_PGC |In/Out |VDD_3V3_SYS |PIC PGC信号
 |51 |ICSP_MCLR_B |Output |VDD_3V3_SYS |PIC MCLR_B信号
-|52 |GND |Power |- |電源(GND)
+|52 |GND |Power |- |電源 (GND)
 |53 |FPGA_TCK |Output |VDD_3V3_IO |FPGA JTAG TCK信号
 |54 |FPGA_TDO |Input |VDD_3V3_IO |FPGA JTAG TDO信号
 |55 |FPGA_TDI |Output |VDD_3V3_IO |FPGA JTAG TDI信号
 |56 |FPGA_TMS |Output |VDD_3V3_IO |FPGA JTAG TMS信号
-|57 |GND |Power |- |電源(GND)
+|57 |GND |Power |- |電源 (GND)
 |58 |UIO2_15 |In/Out |VDD_UIO2 |UIO2 Bit 15信号
 |59 |UIO2_14 |In/Out |VDD_UIO2 |UIO2 Bit 14信号
 |60 |UIO2_13 |In/Out |VDD_UIO2 |UIO2 Bit 13信号
@@ -451,7 +368,7 @@ CON1はOBCとの接続 インタフェースです。
 |63 |UIO2_10 |In/Out |VDD_UIO2 |UIO2 Bit 10信号
 |64 |UIO2_09 |In/Out |VDD_UIO2 |UIO2 Bit 9信号
 |65 |UIO2_08 |In/Out |VDD_UIO2 |UIO2 Bit 8信号
-|66 |GND |Power |- |電源(GND)
+|66 |GND |Power |- |電源 (GND)
 |67 |UIO2_07 |In/Out |VDD_UIO2 |UIO2 Bit 7信号
 |68 |UIO2_06 |In/Out |VDD_UIO2 |UIO2 Bit 6信号
 |69 |UIO2_05 |In/Out |VDD_UIO2 |UIO2 Bit 5信号
@@ -460,7 +377,7 @@ CON1はOBCとの接続 インタフェースです。
 |72 |UIO2_02 |In/Out |VDD_UIO2 |UIO2 Bit 2信号
 |73 |UIO2_01 |In/Out |VDD_UIO2 |UIO2 Bit 1信号
 |74 |UIO2_00 |In/Out |VDD_UIO2 |UIO2 Bit 0信号
-|75 |GND |Power |- |電源(GND)
+|75 |GND |Power |- |電源 (GND)
 |76 |CANL |In/Out |- |SC OBC CAN L信号
 |77 |CANH |In/Out |- |SC OBC CAN H信号
 |78 |VIN_B_P78 |Power |- |OBCの主電源（B系統）
@@ -468,45 +385,29 @@ CON1はOBCとの接続 インタフェースです。
 |80 |VIN_B_P80 |Power |- |OBCの主電源（B系統）
 |===
 
-[fn:hwopt] ハードウェアオプションによって電源ドメインが異なる。『Space
-Cubics OBC製品マニュアル』参照。
+[fn:hwopt] : ハードウェアオプションによって電源ドメインが異なります。『Space Cubics OBC製品マニュアル』を参照してください。
 
 === OBC FPGA JTAG インタフェース（CON2）
 
-CON2はJTAG
-インタフェースであり、OBCのJTAGポートへ接続されています。ピン配列はXilinx社製のPlatform
-cable USB IIに対応しており、以下とも互換性があるため直接接続も可能です。
+CON2はJTAGインタフェースであり、OBCのJTAGポートへ接続されています。ピン配列はXilinx社製のPlatform cable USB IIに対応しており、以下とも互換性があるため直接接続も可能です。
 
-* Digilent社製https://digilent.com/shop/jtag-hs2-programming-cable/[JTAG-HS2
-Programming Cable]
-* Digilent社製https://digilent.com/shop/jtag-hs3-programming-cable/[JTAG-HS3
-Programming Cable]
+* Digilent社製 https://digilent.com/shop/jtag-hs2-programming-cable/[JTAG-HS2 Programming Cable]
+* Digilent社製 https://digilent.com/shop/jtag-hs3-programming-cable/[JTAG-HS3 Programming Cable]
 
 ただしJTAG-HS2を使用する場合は、付属されている14ピンへの変換アダプタを使用してください。
 
 搭載コネクタ：87833-1420（Molex）
 
-[width="100%",cols="10%,9%,9%,9%,9%,9%,9%,9%,9%,9%,9%",options="header",]
+[width="100%",cols="1,1,1,1,2,1,1,1,1,2",options="header",]
 |===
-|ピン番号 |ピン名称 |I/O |電源グループ |説明 | |ピン番号 |ピン名称 |I/O
-|電源グループ |説明
-|1 |NC |- |- |未接続 | |2 |VDD_3V3_IO |Power |- |電源（VDD_3V3_IO）
-
-|3 |GND |Power |- |電源（GND） | |4 |FPGA_TMS |In |VDD_3V3_IO |JTAG
-モード選択
-
-|5 |GND |Power |- |電源（GND） | |6 |FPGA_TCK |In |VDD_3V3_IO |JTAG
-クロック
-
-|7 |GND |Power |- |電源（GND） | |8 |FPGA_TDO |Out |VDD_3V3_IO |JTAG
-データ出力
-
-|9 |GND |Power |- |電源（GND） | |10 |FPGA_TDI |In |VDD_3V3_IO |JTAG
-データ入力
-
-|11 |GND |Power |- |電源（GND） | |12 |NC |- |- |未接続
-
-|13 |GND |Power |- |電源（GND） | |14 |NC |- |- |未接続
+|ピン番号 |ピン名称 |I/O |電源グループ |説明 |ピン番号 |ピン名称 |I/O |電源グループ |説明
+|1 |NC |- |- |未接続 |2 |VDD_3V3_IO |Power |- |電源（VDD_3V3_IO）
+|3 |GND |Power |- |電源（GND） |4 |FPGA_TMS |In |VDD_3V3_IO |JTAG モード選択
+|5 |GND |Power |- |電源（GND） |6 |FPGA_TCK |In |VDD_3V3_IO |JTAG クロック
+|7 |GND |Power |- |電源（GND） |8 |FPGA_TDO |Out |VDD_3V3_IO |JTAG データ出力
+|9 |GND |Power |- |電源（GND） |10 |FPGA_TDI |In |VDD_3V3_IO |JTAG データ入力
+|11 |GND |Power |- |電源（GND） |12 |NC |- |- |未接続
+|13 |GND |Power |- |電源（GND） |14 |NC |- |- |未接続
 |===
 
 === OBC FPGA JTAG インタフェース (Flying Wire Adapter)（CON3）
