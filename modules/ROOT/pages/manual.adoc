@@ -1063,6 +1063,20 @@ LED11はユーザーが自由に使用できるLEDです。
 |LED11 |黄緑色 |SW1を経由してOBCのUIO2_15へ接続
 |===
 
+---
+=== VDD_UIOについて
+VDD_UIO1およびVDD_UIO2には任意の電圧を印加して使用することができます。 +
+ただしFPGAのIO電源はFPGAの電源投入シーケンスに従う必要があり、VDD_3V3_IOがHighになった後に電圧を印加することで電源シーケンスを守ることができます。 +
+Dev BoardではVDD_UIOライン上にパワースイッチ（IC14, IC15）を設けることで、電源シーケンスを守らずにFPGAのIO電圧を印加する事態を防止できます。 +
+またVDD_3V3_IOには電圧値や電流容量の制約があることから、JP4, JP5により、VDD_UIOへの入力を以下の3パターンへ切り替えることを可能にしています。
+
+==== VDD_UIO = VDD_3V3_IO
+image::VDD_UIO-VDD_3V3_IO.svg[VDD_UIO-VDD_3V3_IO.svg]
+==== VDD_UIO = VDD_3V3_DCDC
+image::VDD_UIO-VDD_DCDC.svg[VDD_UIO-VDD_DCDC.svg]
+==== VDD_UIO = Block Terminal Input
+image::VDD_UIO-TRM.svg[VDD_UIO-TRM.svg]
+
 == 基板形状図
 
 image::Board_Dimensions.svg[Board_Dimensions.svg]
