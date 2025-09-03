@@ -270,7 +270,7 @@ image::Switch_Status.svg[Switch_Status.svg]
 
 === 電気的特性
 
-:fn-disclaimer: footnote:disclaimer[試験未実施（設計保証）] 
+:fn-disclaimer: footnote:disclaimer[試験未実施（設計保証）]
 
 [width="100%",cols="3,1,2,1,1,1,1",options="header",]
 |===
