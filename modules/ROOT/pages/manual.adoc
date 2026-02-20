@@ -915,8 +915,8 @@ image::JP5_Status.svg[JP5_Status.svg]
 SW1はOBCと以下の回路の間の接続を制御するためのスイッチです。 +
 
 * High-Speed USB Bridge FT4232H-56Q (IC2)
-* ユーザーが自由に使用できる温度センサ回路（ユーザー温度センサ）
-* ユーザーが自由に使用できるLED回路（ユーザー LED）
+* ユーザーが自由に使用できる温度センサ回路（IC7: ユーザー温度センサ）
+* ユーザーが自由に使用できるLED回路（LED11: ユーザー LED）
 
 初期設定はBit 3,4のみがONで、その他のBitはOFFです。使用する回路のBitを手動で切り替えてください。 +
 手動で切り替える場合、指では操作しづらいため、ピンセットなどの先の尖った道具を使用してください。 +
@@ -929,16 +929,16 @@ image::SW1_Status.svg[SW1_Status.svg]
 [cols="1,1,2,1,2,4",options="header",]
 |===
 |Bit番号 |ピン番号 |ピン名称 |I/O |電源ドメイン |説明
-|1 |1,20 |TRCH_UART_RX / UIO4_10 |Input |VDD_3V3_SYS / VDD_3V3_IO .2+|USBインタフェース(CON2)によるTRCH UARTへの通信 (ON:可 / OFF:不可)
+|1 |1,20 |TRCH_UART_RX / UIO4_10 |Input |VDD_3V3_SYS / VDD_3V3_IO .2+|当該信号を IC2 へ接続。 TRCH の UART 信号を CON2 経由で入出力する場合は接続する。当該信号は CON10に常時接続されている。 (ON:IC2に接続 / OFF:IC2とは切断)
 |2 |2,19 |TRCH_UART_TX / UIO4_09 |Input |VDD_3V3_SYS / VDD_3V3_IO
-|3 |3,18 |UIO4_04 |In/Out |VDD_3V3_IO .2+|USBインタフェース(CON2)によるFPGA UARTへの通信 (ON:可 / OFF:不可) (※UIO4_03,04へFPGA UARTを割り当てている場合)
+|3 |3,18 |UIO4_04 |In/Out |VDD_3V3_IO .2+|当該信号を IC2 へ接続。当該信号を CON2 経由で入出力する場合は接続する。当該信号は常に CON12 に接続さている。 (ON:IC2に接続 / OFF:IC2とは切断) (※出荷イメージでは、UIO4_03,04 に SoftCore CPUのシリアルコンソールが割り当っている)
 |4 |4,17 |UIO4_03 |In/Out |VDD_3V3_IO
-|5 |5,16 |UIO4_02 |In/Out |VDD_3V3_IO .2+|USBインタフェース(CON2)によるCPU JTAGへの通信 (ON:可 / OFF:不可) (※UIO4_01,02へCPU JTAGを割り当てている場合)
+|5 |5,16 |UIO4_02 |In/Out |VDD_3V3_IO .2+|当該信号を IC2 へ接続。当該信号を CON2 経由で入出力する場合は接続する。当該信号は常に CON12 に接続さている。 (ON:IC2に接続 / OFF:IC2とは切断) (※出荷イメージでは、UIO4_01,02 に SoftCore CPU JTAG が割り当っている)
 |6 |6,15 |UIO4_01 |In/Out |VDD_3V3_IO
-|7 |7,14 |I2C_EXT_SCL |Output |VDD_3V3_SYS .2+|External I2Cによるユーザー温度センサからの温度データ取得 (ON:可 / OFF:不可)
+|7 |7,14 |I2C_EXT_SCL |Output |VDD_3V3_SYS .2+|当該信号を IC7 へ接続。当該信号でユーザー温度センサから温度データ取得する場合は接続する。当該信号は常に CON10 に接続されている。 (ON:IC7に接続 / OFF:IC7とは切断)
 |8 |8,13 |I2C_EXT_SDA |In/Out |VDD_3V3_SYS
-|9 |9,12 |UIO2_14 |In/Out |VDD_UIO2 |UIO2_14に対するプルダウン(1kΩ) (ON:有 / OFF:無)
-|10 |10,11 |UIO2_15 |In/Out |VDD_UIO2 |UIO2_15によるユーザーLED(LED11)の制御 (ON:可 / OFF:不可)
+|9 |9,12 |UIO2_14 |In/Out |VDD_UIO2 |当該信号を 1kΩ でプルダウンする。当該信号で LOW を検出したい場合は接続する。当該信号は常に CON8 に接続さている。 (ON:プルダウン / OFF:FPGA によるプルアップを期待)
+|10 |10,11 |UIO2_15 |In/Out |VDD_UIO2 |当該信号を LED11 へ接続。当該信号でユーザーLEDを制御する場合は接続する。当該信号は常に CON8 に接続さている。 (ON:LED11に接続 / OFF:LED11とは切断)
 |===
 
 ---
