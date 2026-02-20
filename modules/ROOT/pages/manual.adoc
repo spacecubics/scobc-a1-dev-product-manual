@@ -829,7 +829,7 @@ image::JP2_Status.svg[JP2_Status.svg]
 [width="70%",cols="1,1,3",options="header",]
 |===
 |モード |ピン接続 |説明
-|Mode1(初期) |1-2 |VIN_Aへの入力をCON17から供給
+|Mode1 (出荷時) |1-2 |VIN_Aへの入力をCON17から供給
 |Mode2 |2-3 |VIN_Aへの入力をCON18から供給
 |===
 
@@ -853,7 +853,7 @@ image::JP3_Status.svg[JP3_Status.svg]
 [width="70%",cols="1,1,3",options="header",]
 |===
 |モード |ピン接続 |説明
-|Mode1(初期) |1-2 |VIN_Bへの入力をCON17から供給
+|Mode1 (出荷時) |1-2 |VIN_Bへの入力をCON17から供給
 |Mode2 |2-3 |VIN_Bへの入力をCON19から供給
 |===
 
@@ -878,7 +878,7 @@ image::JP4_Status.svg[JP4_Status.svg]
 [width="70%",cols="1,1,3",options="header",]
 |===
 |モード |ピン接続 |説明
-|Mode1(初期) |1-2 |VDD_UIO1への電源をVDD_3V3_IOから供給
+|Mode1 (出荷時) |1-2 |VDD_UIO1への電源をVDD_3V3_IOから供給
 |Mode2 |3-4 |VDD_UIO1への電源をVDD_3V3_DCDCから供給
 |Mode3 |5-6 |VDD_UIO1への電源をCON20から供給
 |===
@@ -904,7 +904,7 @@ image::JP5_Status.svg[JP5_Status.svg]
 [width="70%",cols="1,1,3",options="header",]
 |===
 |モード |ピン接続 |説明
-|Mode1(初期) |1-2 |VDD_UIO2への電源をVDD_3V3_IOから供給
+|Mode1 (出荷時) |1-2 |VDD_UIO2への電源をVDD_3V3_IOから供給
 |Mode2 |3-4 |VDD_UIO2への電源をVDD_3V3_DCDCから供給
 |Mode3 |5-6 |VDD_UIO2への電源をCON21から供給
 |===
