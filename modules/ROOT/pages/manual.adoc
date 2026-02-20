@@ -804,7 +804,7 @@ CON22は VDD_3V3_DCDC の出力インタフェースです。VDD_UIO1 および 
 === CAN終端抵抗切替 インタフェース（JP1）
 
 JP1はCAN通信経路上のOBC側の終端抵抗 (120Ω)の有無を切り替えることができるインタフェースです。 +
-OBCには終端抵抗が実装されていないことから、Dev Boardの初期仕様ではJP1にジャンパーソケットが挿入され、OBC側が終端されています。 +
+OBCには終端抵抗が実装されていないことから、Dev Boardの出荷時はJP1にジャンパーソケットが挿入され、OBC側が終端されています。 +
 Dev Board外で別途終端する場合はジャンパーソケットを外してください。
 
 搭載コネクタ：10129378-902001BLF（Amphenol CS）
@@ -861,7 +861,7 @@ image::JP3_Status.svg[JP3_Status.svg]
 === 電源入力切替 インタフェース (VDD_UIO1)（JP4）
 
 JP4は VDD_UIO1 への電源を VDD_3V3_IO, VDD_3V3_DCDC, CON20の中から選択することができるインタフェースです。 +
-Dev Boardの初期仕様では、ジャンパーソケットによりVDD_3V3_IOが選択されています。
+Dev Boardの出荷時は、ジャンパーソケットによりVDD_3V3_IOが選択されています。
 
 搭載コネクタ：10129381-906001BLF（Amphenol CS）
 
@@ -887,7 +887,7 @@ image::JP4_Status.svg[JP4_Status.svg]
 === 電源入力切替 インタフェース (VDD_UIO2)（JP5）
 
 JP5は VDD_UIO2 への電源を VDD_3V3_IO, VDD_3V3_DCDC, CON21の中から選択することができるインタフェースです。 +
-Dev Boardの初期仕様では、ジャンパーソケットによりVDD_3V3_IOが選択されています。
+Dev Boardの出荷時は、ジャンパーソケットによりVDD_3V3_IOが選択されています。
 
 搭載コネクタ：10129381-906001BLF（Amphenol CS）
 
