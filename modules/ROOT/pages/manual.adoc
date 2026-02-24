@@ -914,9 +914,9 @@ image::JP5_Status.svg[JP5_Status.svg]
 
 SW1はOBCと以下の回路の間の接続を制御するためのスイッチです。 +
 
-* High-Speed USB Bridge FT4232H-56Q (IC2)
-* ユーザーが自由に使用できる温度センサ回路（IC7: ユーザー温度センサ）
-* ユーザーが自由に使用できるLED回路（LED11: ユーザー LED）
+* IC2: High-Speed USB Bridge (FT4232H)
+* IC7: ユーザー温度センサ (TMP175)
+* LED11: ユーザーLED (SML-D12M8WT86)
 
 初期設定はBit 3,4のみがONで、その他のBitはOFFです。使用する回路のBitを手動で切り替えてください。 +
 手動で切り替える場合、指では操作しづらいため、ピンセットなどの先の尖った道具を使用してください。 +
